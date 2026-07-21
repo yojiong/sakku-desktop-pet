@@ -1,6 +1,6 @@
 {
   "name": "sakku-desktop-pet",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Interactive Sakku desktop pet for Windows",
   "main": "main.js",
   "scripts": {
@@ -35,7 +35,10 @@
       "node_modules/loudness/**/*"
     ],
     "win": {
-      "target": ["nsis", "portable"]
+      "target": [
+        "nsis",
+        "portable"
+      ]
     },
     "nsis": {
       "oneClick": false,
