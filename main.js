@@ -9,7 +9,12 @@ let lastVolume = null;
 let quitting = false;
 
 function summonAtCursor() {
-  if (!petWindow) return;
+  if (!petWindow || petWindow.isDestroyed()) {
+    console.warn("Pet window was missing; recreating it before summon.");
+    createPetWindow();
+    petWindow.webContents.once("did-finish-load", summonAtCursor);
+    return;
+  }
   const cursor = screen.getCursorScreenPoint();
   const area = screen.getDisplayNearestPoint(cursor).workArea;
   const bounds = petWindow.getBounds();
@@ -24,6 +29,7 @@ function summonAtCursor() {
   petWindow.setPosition(x, y, false);
   petWindow.showInactive();
   petWindow.moveTop();
+  console.log(`Pet summoned at ${x},${y}`);
 }
 
 function startGlobalHotkeys() {
