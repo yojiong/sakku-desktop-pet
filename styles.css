@@ -1,0 +1,32 @@
+:root { --pet-scale: 1; }
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: transparent;
+  user-select: none;
+}
+
+body {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+#pet {
+  width: 192px;
+  height: 208px;
+  flex: 0 0 auto;
+  background-image: url("./assets/spritesheet.webp");
+  background-repeat: no-repeat;
+  background-size: 1536px 1872px;
+  cursor: grab;
+  transform: scale(var(--pet-scale));
+  transform-origin: center bottom;
+  touch-action: none;
+}
+
+#pet.dragging { cursor: grabbing; }
+
